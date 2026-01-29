@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(du:*)",
+      "Bash(find:*)",
+      "Read(//Users/rosssavage/Source/Hack/breez-sdk-spark-kotlin-multiplatform-ios-test/**)",
+      "Bash(xcodebuild:*)"
+    ]
+  }
+}

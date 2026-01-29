@@ -1,0 +1,37 @@
+name: iosApp
+options:
+  bundleIdPrefix: com.test.breezdylib
+  deploymentTarget:
+    iOS: "16.0"
+
+packages:
+  GRDB:
+    url: https://github.com/groue/GRDB.swift.git
+    exactVersion: 7.8.0
+
+targets:
+  iosApp:
+    type: application
+    platform: iOS
+    sources:
+      - iosApp
+    settings:
+      base:
+        INFOPLIST_FILE: iosApp/Info.plist
+        FRAMEWORK_SEARCH_PATHS:
+          - "$(inherited)"
+          - "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)"
+        OTHER_LINKER_FLAGS:
+          - "$(inherited)"
+          - "-framework"
+          - "shared"
+    dependencies:
+      - package: GRDB
+      - framework: "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)/shared.framework"
+        embed: false
+    preBuildScripts:
+      - name: "Build KMP Shared Framework"
+        script: |
+          cd "$SRCROOT/.."
+          ./gradlew :shared:embedAndSignAppleFrameworkForXcode
+        basedOnDependencyAnalysis: false

@@ -3,5 +3,5 @@ platform :ios, '16.0'
 target 'iosApp' do
   use_frameworks!
 
-  pod 'BreezSdkSpark', '0.7.12'
+  pod 'breez_sdk_sparkFFI', '0.7.13-dev2'
 end

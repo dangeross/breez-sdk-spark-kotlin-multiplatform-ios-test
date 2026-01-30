@@ -4,6 +4,7 @@ pluginManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
+        maven("https://mvn.breez.technology/releases")
     }
 }
 
@@ -12,8 +13,10 @@ dependencyResolutionManagement {
         mavenLocal()
         google()
         mavenCentral()
+        maven("https://mvn.breez.technology/releases")
     }
 }
 
 rootProject.name = "BreezSdkDylibTest"
 include(":shared")
+include(":androidApp")
